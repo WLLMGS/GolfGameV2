@@ -58,14 +58,14 @@ public class BallBehavior : MonoBehaviour
            
             _directionArrow.transform.rotation = Quaternion.Euler(new Vector3(0,angle * Mathf.Rad2Deg, 0));
 
-           _directionPlane.transform.localScale = new Vector3(_dir.magnitude, 0.1f, 0.05f);
+           _directionPlane.transform.localScale = new Vector3(_dir.magnitude, 1.0f, 1.0f);
 
         }
 
         if (Input.GetMouseButtonUp(0))
         {
             _directionArrow.SetActive(false);
-            
+
             float angle = Mathf.Atan2(_dir.x, _dir.z);
             float camAngle = Camera.main.transform.rotation.eulerAngles.y * Mathf.Deg2Rad;
 
@@ -83,5 +83,15 @@ public class BallBehavior : MonoBehaviour
         }
 
 
+    }
+
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.gameObject.tag == "Killbox")
+        {
+          //notify game manager
+          GameplayManager.GetInstance().NotifyPlayerDead();
+        }
     }
 }

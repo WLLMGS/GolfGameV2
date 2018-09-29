@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 20659261839886872}
   - component: {fileID: 81098967238996210}
   - component: {fileID: 114263530799994820}
+  - component: {fileID: 45999455719225570}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -82,6 +83,14 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
+--- !u!45 &45999455719225570
+Skybox:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1260613251678362}
+  m_Enabled: 1
+  m_CustomSkybox: {fileID: 2100000, guid: 2bd8959f5fbd3644aa33af1a155fc147, type: 2}
 --- !u!81 &81098967238996210
 AudioListener:
   m_ObjectHideFlags: 1
@@ -100,5 +109,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b530e1a09fa6c5c43b2d0f1097bbaabe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _ball: {fileID: 0}
-  _maxDistanceToBall: 10
+  _object: {fileID: 0}
+  _rotationSpeed: 2
