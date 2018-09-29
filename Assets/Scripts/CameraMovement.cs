@@ -7,7 +7,7 @@ public class CameraMovement : MonoBehaviour
 {
 
     [SerializeField] private GameObject _ball;
-    [SerializeField] private float _maxDistanceToBall = 10.0f;
+   [SerializeField] private float _rotationSpeed = 2.0f;
 
     private Vector3 _previousBallPosition;
 
@@ -38,13 +38,10 @@ public class CameraMovement : MonoBehaviour
         if (Input.GetMouseButton(1))
         {
             float xm = Input.GetAxis("Mouse X");
+			float ym = Input.GetAxis("Mouse Y");
 
-            Vector3 currentRot = transform.rotation.eulerAngles;
-            currentRot.y += xm;
-
-            //transform.rotation = Quaternion.Euler(currentRot);
-
-			transform.RotateAround(_ball.transform.position, new Vector3(0,1,0), xm);
+			transform.RotateAround(_ball.transform.position, new Vector3(0,1,0), xm * _rotationSpeed);
+			transform.RotateAround(_ball.transform.position, transform.right, ym);
         }
 
     }
