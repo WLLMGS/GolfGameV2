@@ -8,6 +8,7 @@ using UnityEngine.Assertions;
 public class BallBehavior : MonoBehaviour
 {
 
+    [SerializeField] private float _moveForce = 3.0f;
 
     private Rigidbody _rigid;
 
@@ -38,22 +39,25 @@ public class BallBehavior : MonoBehaviour
             //Debug.Log("MOUSE MOVEMENT: [" + xm + "," + ym + "]");
 
             _dir += new Vector3(xm, 0, ym);
+            _rigid.velocity = Vector3.zero;
         }
 
         if (Input.GetMouseButtonUp(0))
         {
-			float angle = Mathf.Atan2(_dir.x, _dir.z);
-			float camAngle = Camera.main.transform.rotation.eulerAngles.y * Mathf.Deg2Rad;
+            float angle = Mathf.Atan2(_dir.x, _dir.z);
+            float camAngle = Camera.main.transform.rotation.eulerAngles.y * Mathf.Deg2Rad;
 
-			// if cam = -90 9+ 90.0f	
-			angle += camAngle + Mathf.PI / 2.0f;
+            // if cam = -90 + 90.0f = 0	
+            angle += camAngle + Mathf.PI / 2.0f;
 
-			// angle -= Camera.main.transform.rotation.eulerAngles.y * Mathf.Deg2Rad / 2.0f;
+            Vector3 force = new Vector3(-Mathf.Cos(angle), 0, Mathf.Sin(angle));
+            float magnitude = _dir.magnitude;
 
-			Vector3 force = new Vector3(-Mathf.Cos(angle), 0, Mathf.Sin(angle));
-			float magnitude = _dir.magnitude;
+            force *= magnitude;
 
-			_rigid.AddForce(force * magnitude, ForceMode.Impulse);
+            _rigid.AddForce(force * _moveForce, ForceMode.Impulse);
+
+            _dir = Vector3.zero;
         }
 
 
