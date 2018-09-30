@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Assertions;
+using UnityEngine.UI;
 
 public class GameplayManager : MonoBehaviour
 {
@@ -12,7 +13,11 @@ public class GameplayManager : MonoBehaviour
     private static GameplayManager _instance = null;
 
     private GameObject _currentBall;
-	private GameObject _spawnpoint;
+    private GameObject _spawnpoint;
+
+    private int _strokes = 0;
+
+    private GameObject _UIStroke;
 
     // Use this for initialization
     void Awake()
@@ -22,6 +27,12 @@ public class GameplayManager : MonoBehaviour
 
     void Start()
     {
+        _UIStroke = GameObject.Find("StrokesText").gameObject;
+
+#if DEBUG
+Assert.IsNotNull(_UIStroke, "could not find ui");
+#endif
+
         //spawn player
         SpawnPlayer();
     }
@@ -29,7 +40,17 @@ public class GameplayManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        HandleControls();
+    }
 
+    private void HandleControls()
+    {
+        if(Input.GetKeyDown(KeyCode.R))
+        {
+            //respawn player
+            RespawnPlayer();
+            ResetScore();
+        }
     }
 
     public static GameplayManager GetInstance()
@@ -47,23 +68,42 @@ public class GameplayManager : MonoBehaviour
 #endif
 
         _currentBall = Instantiate(_ball, _spawnpoint.transform.position, Quaternion.identity); //spawn player ball
-		
-		Camera.main.gameObject.GetComponent<CameraMovement>().SetObjectToFollow(_currentBall); //-> set object to follow
+
+        Camera.main.gameObject.GetComponent<CameraMovement>().SetObjectToFollow(_currentBall); //-> set object to follow
 
     }
 
-	public void NotifyPlayerDead()
-	{
-		RespawnPlayer();
-	}
+    public void NotifyPlayerDead()
+    {
+        RespawnPlayer();
+    }
 
-	private void RespawnPlayer()
-	{
-		Destroy(_currentBall);
+    private void RespawnPlayer()
+    {
+        Destroy(_currentBall);
 
-		_currentBall = Instantiate(_ball, _spawnpoint.transform.position, Quaternion.identity);
+        _currentBall = Instantiate(_ball, _spawnpoint.transform.position, Quaternion.identity);
 
-		Camera.main.gameObject.GetComponent<CameraMovement>().SetObjectToFollow(_currentBall); //-> set object to follow
+        Camera.main.gameObject.GetComponent<CameraMovement>().SetObjectToFollow(_currentBall); //-> set object to follow
+    }
 
-	}
+    public void NotifyStroke()
+    {
+        ++_strokes;
+
+        //update UI
+        _UIStroke.GetComponent<Text>().text = _strokes.ToString();
+    }
+
+    public void NotifyReachedFinish()
+    {
+        //navigate to finish screen
+        Debug.Log("FINISHED");
+    }
+
+    private void ResetScore()
+    {
+        _strokes = 0;
+        _UIStroke.GetComponent<Text>().text = _strokes.ToString();
+    }
 }

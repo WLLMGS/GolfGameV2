@@ -80,18 +80,26 @@ public class BallBehavior : MonoBehaviour
             _rigid.AddForce(force * _moveForce, ForceMode.Impulse);
 
             _dir = Vector3.zero;
+
+            //notify game manager
+            GameplayManager.GetInstance().NotifyStroke();
         }
 
 
     }
 
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerStay(Collider other)
     {
         if(other.gameObject.tag == "Killbox")
         {
           //notify game manager
           GameplayManager.GetInstance().NotifyPlayerDead();
+        }
+        else if(other.gameObject.tag == "Finish")
+        {
+            //notify level end
+            GameplayManager.GetInstance().NotifyReachedFinish();
         }
     }
 }
