@@ -12,6 +12,8 @@ public class BallBehavior : MonoBehaviour
 
     private Rigidbody _rigid;
 
+    private bool _isReadyToMove = false;
+
     private Vector3 _dir = new Vector3();
 
     private GameObject _directionArrow;
@@ -33,56 +35,64 @@ public class BallBehavior : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        IsReadyToMove();
         HandleMovement();
     }
-
+    void IsReadyToMove()
+    {
+        if (_rigid.velocity.magnitude <= 0.1f) _isReadyToMove = true;
+    }
     void HandleMovement()
     {
-        if (Input.GetMouseButton(0))
+        if (_isReadyToMove)
         {
-            if(!_directionArrow.activeSelf) _directionArrow.SetActive(true);
+            if (Input.GetMouseButton(0))
+            {
+                if (!_directionArrow.activeSelf) _directionArrow.SetActive(true);
 
 
-            float xm = Input.GetAxis("Mouse X");
-            float ym = Input.GetAxis("Mouse Y");
-            //Debug.Log("MOUSE MOVEMENT: [" + xm + "," + ym + "]");
+                float xm = Input.GetAxis("Mouse X");
+                float ym = Input.GetAxis("Mouse Y");
+                //Debug.Log("MOUSE MOVEMENT: [" + xm + "," + ym + "]");
 
-            _dir += new Vector3(xm, 0, ym);
-            _rigid.velocity = Vector3.zero;
+                _dir += new Vector3(xm, 0, ym);
+
+                float angle = Mathf.Atan2(_dir.x, _dir.z);
+                float camAngle = Camera.main.transform.rotation.eulerAngles.y * Mathf.Deg2Rad;
+                angle += camAngle + Mathf.PI / 2.0f;
 
 
-            float angle = Mathf.Atan2(_dir.x, _dir.z);
-            float camAngle = Camera.main.transform.rotation.eulerAngles.y * Mathf.Deg2Rad;
-            angle += camAngle + Mathf.PI / 2.0f;
+                _directionArrow.transform.rotation = Quaternion.Euler(new Vector3(0, angle * Mathf.Rad2Deg, 0));
 
-           
-            _directionArrow.transform.rotation = Quaternion.Euler(new Vector3(0,angle * Mathf.Rad2Deg, 0));
+                _directionPlane.transform.localScale = new Vector3(_dir.magnitude, 1.0f, 1.0f);
 
-           _directionPlane.transform.localScale = new Vector3(_dir.magnitude, 1.0f, 1.0f);
+            }
 
-        }
+            if (Input.GetMouseButtonUp(0))
+            {
+                _directionArrow.SetActive(false);
 
-        if (Input.GetMouseButtonUp(0))
-        {
-            _directionArrow.SetActive(false);
+                float angle = Mathf.Atan2(_dir.x, _dir.z);
+                float camAngle = Camera.main.transform.rotation.eulerAngles.y * Mathf.Deg2Rad;
 
-            float angle = Mathf.Atan2(_dir.x, _dir.z);
-            float camAngle = Camera.main.transform.rotation.eulerAngles.y * Mathf.Deg2Rad;
+                // if cam = -90 + 90.0f = 0	
+                angle += camAngle + Mathf.PI / 2.0f;
 
-            // if cam = -90 + 90.0f = 0	
-            angle += camAngle + Mathf.PI / 2.0f;
+                Vector3 force = new Vector3(-Mathf.Cos(angle), 0, Mathf.Sin(angle));
+                float magnitude = _dir.magnitude;
 
-            Vector3 force = new Vector3(-Mathf.Cos(angle), 0, Mathf.Sin(angle));
-            float magnitude = _dir.magnitude;
+                force *= magnitude;
 
-            force *= magnitude;
+                _rigid.AddForce(force * _moveForce, ForceMode.Impulse);
 
-            _rigid.AddForce(force * _moveForce, ForceMode.Impulse);
+                _dir = Vector3.zero;
 
-            _dir = Vector3.zero;
+                //notify game manager
+                GameplayManager.GetInstance().NotifyStroke();
 
-            //notify game manager
-            GameplayManager.GetInstance().NotifyStroke();
+                _isReadyToMove = false;
+            }
+
         }
 
 
@@ -91,12 +101,12 @@ public class BallBehavior : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
-        if(other.gameObject.tag == "Killbox")
+        if (other.gameObject.tag == "Killbox")
         {
-          //notify game manager
-          GameplayManager.GetInstance().NotifyPlayerDead();
+            //notify game manager
+            GameplayManager.GetInstance().NotifyPlayerDead();
         }
-        else if(other.gameObject.tag == "Finish")
+        else if (other.gameObject.tag == "Finish")
         {
             //notify level end
             GameplayManager.GetInstance().NotifyReachedFinish();
