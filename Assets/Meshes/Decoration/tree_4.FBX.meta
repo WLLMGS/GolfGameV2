@@ -1,64 +1,15 @@
 fileFormatVersion: 2
-guid: a2b530f83989a4c4397c5d992a791c42
+guid: ad82dfa9185f0084bb0a6291a1fe5499
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
     100000: //RootNode
-    100002: modular_piece_corner_1
-    100004: modular_piece_straight_1
-    100006: Plane001
-    100008: modular_piece_straight_002
-    100010: Cylinder001
-    100012: modular_piece_end
-    100014: modular_piece_corner_002
-    100016: modular_piece_hole
-    100018: modular_piece_level1
-    100020: modular_piece_straight_003
     400000: //RootNode
-    400002: modular_piece_corner_1
-    400004: modular_piece_straight_1
-    400006: Plane001
-    400008: modular_piece_straight_002
-    400010: Cylinder001
-    400012: modular_piece_end
-    400014: modular_piece_corner_002
-    400016: modular_piece_hole
-    400018: modular_piece_level1
-    400020: modular_piece_straight_003
-    2100000: No Name
-    2100002: 02 - Default
-    2100004: 03 - Default
-    2300000: modular_piece_corner_1
-    2300002: modular_piece_straight_1
-    2300004: Plane001
-    2300006: modular_piece_straight_002
-    2300008: Cylinder001
-    2300010: modular_piece_end
-    2300012: modular_piece_corner_002
-    2300014: modular_piece_hole
-    2300016: modular_piece_level1
-    2300018: modular_piece_straight_003
-    3300000: modular_piece_corner_1
-    3300002: modular_piece_straight_1
-    3300004: Plane001
-    3300006: modular_piece_straight_002
-    3300008: Cylinder001
-    3300010: modular_piece_end
-    3300012: modular_piece_corner_002
-    3300014: modular_piece_hole
-    3300016: modular_piece_level1
-    3300018: modular_piece_straight_003
-    4300000: Plane001
-    4300002: modular_piece_straight_1
-    4300004: modular_piece_corner_1
-    4300006: modular_piece_straight_002
-    4300008: Cylinder001
-    4300010: modular_piece_end
-    4300012: modular_piece_hole
-    4300014: modular_piece_corner_002
-    4300016: modular_piece_level1
-    4300018: modular_piece_straight_003
-    2186277476908879412: ImportLogs
+    2100000: 02 - Default
+    2100002: 01 - Default
+    2300000: //RootNode
+    3300000: //RootNode
+    4300000: Cylinder001
   externalObjects: {}
   materials:
     importMaterials: 1

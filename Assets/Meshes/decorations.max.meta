@@ -1,64 +1,54 @@
 fileFormatVersion: 2
-guid: a2b530f83989a4c4397c5d992a791c42
+guid: b6899c25b7a78fa46a05f22a6fa104f9
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
     100000: //RootNode
-    100002: modular_piece_corner_1
-    100004: modular_piece_straight_1
-    100006: Plane001
-    100008: modular_piece_straight_002
-    100010: Cylinder001
-    100012: modular_piece_end
-    100014: modular_piece_corner_002
-    100016: modular_piece_hole
-    100018: modular_piece_level1
-    100020: modular_piece_straight_003
+    100002: terrain1
+    100004: terrain2
+    100006: tree1
+    100008: Cylinder001
+    100010: rock_1
+    100012: rock_2
+    100014: tree_2
+    100016: tree_3
     400000: //RootNode
-    400002: modular_piece_corner_1
-    400004: modular_piece_straight_1
-    400006: Plane001
-    400008: modular_piece_straight_002
-    400010: Cylinder001
-    400012: modular_piece_end
-    400014: modular_piece_corner_002
-    400016: modular_piece_hole
-    400018: modular_piece_level1
-    400020: modular_piece_straight_003
-    2100000: No Name
-    2100002: 02 - Default
-    2100004: 03 - Default
-    2300000: modular_piece_corner_1
-    2300002: modular_piece_straight_1
-    2300004: Plane001
-    2300006: modular_piece_straight_002
-    2300008: Cylinder001
-    2300010: modular_piece_end
-    2300012: modular_piece_corner_002
-    2300014: modular_piece_hole
-    2300016: modular_piece_level1
-    2300018: modular_piece_straight_003
-    3300000: modular_piece_corner_1
-    3300002: modular_piece_straight_1
-    3300004: Plane001
-    3300006: modular_piece_straight_002
-    3300008: Cylinder001
-    3300010: modular_piece_end
-    3300012: modular_piece_corner_002
-    3300014: modular_piece_hole
-    3300016: modular_piece_level1
-    3300018: modular_piece_straight_003
-    4300000: Plane001
-    4300002: modular_piece_straight_1
-    4300004: modular_piece_corner_1
-    4300006: modular_piece_straight_002
-    4300008: Cylinder001
-    4300010: modular_piece_end
-    4300012: modular_piece_hole
-    4300014: modular_piece_corner_002
-    4300016: modular_piece_level1
-    4300018: modular_piece_straight_003
-    2186277476908879412: ImportLogs
+    400002: terrain1
+    400004: terrain2
+    400006: tree1
+    400008: Cylinder001
+    400010: rock_1
+    400012: rock_2
+    400014: tree_2
+    400016: tree_3
+    2100000: 02 - Default
+    2100002: 01 - Default
+    2100004: No Name
+    2100006: 03 - Default
+    2300000: terrain1
+    2300002: terrain2
+    2300004: tree1
+    2300006: Cylinder001
+    2300008: rock_1
+    2300010: rock_2
+    2300012: tree_2
+    2300014: tree_3
+    3300000: terrain1
+    3300002: terrain2
+    3300004: tree1
+    3300006: Cylinder001
+    3300008: rock_1
+    3300010: rock_2
+    3300012: tree_2
+    3300014: tree_3
+    4300000: tree1
+    4300002: terrain1
+    4300004: terrain2
+    4300006: tree_2
+    4300008: tree_3
+    4300010: rock_2
+    4300012: rock_1
+    4300014: Cylinder001
   externalObjects: {}
   materials:
     importMaterials: 1
