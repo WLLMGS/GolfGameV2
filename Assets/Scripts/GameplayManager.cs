@@ -3,11 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Assertions;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class GameplayManager : MonoBehaviour
 {
-
-
     [SerializeField] private GameObject _ball;
 
     [SerializeField] private List<GameObject> _spawnPoints = new List<GameObject>();
@@ -27,7 +26,11 @@ public class GameplayManager : MonoBehaviour
     void Awake()
     {
         if (_instance == null) _instance = this;
+
+        SpawnPlayer();
+        SetCameraParams();
     }
+
 
     void Start()
     {
@@ -38,9 +41,12 @@ public class GameplayManager : MonoBehaviour
 #endif
 
         //spawn player
-        SpawnPlayer();
-        SetCameraParams();
+
+
+
     }
+
+
 
     // Update is called once per frame
     void Update()
@@ -56,6 +62,11 @@ public class GameplayManager : MonoBehaviour
             RespawnPlayer();
             ResetScore();
         }
+        else if (Input.GetKeyDown(KeyCode.C))
+        {
+            SetCameraParams();
+        }
+        
     }
 
     public static GameplayManager GetInstance()
@@ -75,14 +86,14 @@ public class GameplayManager : MonoBehaviour
         _currentBall = Instantiate(_ball, _spawnPoints[_currentHoleIndex].transform.position, Quaternion.identity); //spawn player ball
 
         Camera.main.gameObject.GetComponent<CameraMovement>().SetObjectToFollow(_currentBall); //-> set object to follow
-
-
-
+        Debug.Log("DONE");
 
     }
     private void SetCameraParams()
     {
         Vector3 ballPos = _currentBall.transform.position;
+
+        Debug.Log(ballPos);
 
         Vector3 dc = new Vector3(14, 9, 0);
 
@@ -114,8 +125,8 @@ public class GameplayManager : MonoBehaviour
 
     public void NotifyReachedFinish()
     {
-        
-        if(_currentHoleIndex + 1 < _spawnPoints.Count) 
+
+        if (_currentHoleIndex + 1 < _spawnPoints.Count)
         {
             ++_currentHoleIndex;
             RespawnPlayer();

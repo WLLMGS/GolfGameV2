@@ -15,7 +15,7 @@ public class CameraMovement : MonoBehaviour
     void Start()
     {
 #if DEBUG
-        Assert.IsNotNull(_object, "camera does not have ball obj");
+        //Assert.IsNotNull(_object, "camera does not have ball obj");
 #endif
 
         _previousBallPosition = _object.transform.position;

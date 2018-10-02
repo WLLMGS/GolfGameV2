@@ -19,4 +19,19 @@ public class MainMenuManager : MonoBehaviour {
 	{
 		SceneManager.LoadScene(1);		
 	}
+
+	public void ResumeButtonPressed()
+	{
+		SceneManager.LoadScene(1, LoadSceneMode.Single);
+	}
+
+	public void QuitButtonPressed()
+	{
+		Application.Quit();
+	}
+
+	public void MainMenuButtonPressed()
+	{
+		SceneManager.LoadScene(0);
+	}
 }
