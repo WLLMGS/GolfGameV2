@@ -71,6 +71,20 @@ Assert.IsNotNull(_UIStroke, "could not find ui");
 
         Camera.main.gameObject.GetComponent<CameraMovement>().SetObjectToFollow(_currentBall); //-> set object to follow
 
+
+        Vector3 ballPos = _currentBall.transform.position;
+
+        Vector3 dc = new Vector3(14,9,0);
+
+        Vector3 eulerBall = _currentBall.transform.rotation.eulerAngles;
+        Vector3 dcEuler = new Vector3(-13, 30, 0); 
+
+
+
+        //set camera position
+        Camera.main.gameObject.transform.position = ballPos + dc; 
+        Camera.main.gameObject.transform.rotation = Quaternion.Euler(new Vector3(27,-90,0));
+
     }
 
     public void NotifyPlayerDead()

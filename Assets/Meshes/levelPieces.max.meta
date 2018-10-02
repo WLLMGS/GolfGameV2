@@ -30,6 +30,26 @@ ModelImporter:
     100048: piece_basic_corner004
     100050: piece_basic_end
     100052: piece_basic_end_hole
+    100054: piece_basic_center001
+    100056: piece_basic_corner005
+    100058: piece_basic_end001
+    100060: piece_basic_end002
+    100062: piece_basic_end_hole001
+    100064: pieces_basic_ramp
+    100066: pieces_basic_ramp001
+    100068: pillar_1
+    100070: Ramp
+    100072: Ramp001
+    100074: Cylinder002
+    100076: level1_v3
+    100078: piece_new_center
+    100080: piece_new_center001
+    100082: piece_new_end
+    100084: piece_new_end001
+    100086: piece_new_hole
+    100088: piece_new_hole002
+    100090: pieces_new_corner
+    100092: pieces_new_corner001
     400000: //RootNode
     400002: modular_piece_corner_1
     400004: modular_piece_straight_1
@@ -57,10 +77,33 @@ ModelImporter:
     400048: piece_basic_corner004
     400050: piece_basic_end
     400052: piece_basic_end_hole
+    400054: piece_basic_center001
+    400056: piece_basic_corner005
+    400058: piece_basic_end001
+    400060: piece_basic_end002
+    400062: piece_basic_end_hole001
+    400064: pieces_basic_ramp
+    400066: pieces_basic_ramp001
+    400068: pillar_1
+    400070: Ramp
+    400072: Ramp001
+    400074: Cylinder002
+    400076: level1_v3
+    400078: piece_new_center
+    400080: piece_new_center001
+    400082: piece_new_end
+    400084: piece_new_end001
+    400086: piece_new_hole
+    400088: piece_new_hole002
+    400090: pieces_new_corner
+    400092: pieces_new_corner001
     2100000: No Name
     2100002: 02 - Default
     2100004: 03 - Default
     2100006: '01 - Default Slot #3'
+    2100008: '01 - Default Slot #5'
+    2100010: '01 - Default Slot #4'
+    2100012: '01 - Default Slot #6'
     2300000: modular_piece_corner_1
     2300002: modular_piece_straight_1
     2300004: Plane001
@@ -87,6 +130,26 @@ ModelImporter:
     2300046: piece_basic_corner004
     2300048: piece_basic_end
     2300050: piece_basic_end_hole
+    2300052: piece_basic_center001
+    2300054: piece_basic_corner005
+    2300056: piece_basic_end001
+    2300058: piece_basic_end002
+    2300060: piece_basic_end_hole001
+    2300062: pieces_basic_ramp
+    2300064: pieces_basic_ramp001
+    2300066: pillar_1
+    2300068: Ramp
+    2300070: Ramp001
+    2300072: Cylinder002
+    2300074: level1_v3
+    2300076: piece_new_center
+    2300078: piece_new_center001
+    2300080: piece_new_end
+    2300082: piece_new_end001
+    2300084: piece_new_hole
+    2300086: piece_new_hole002
+    2300088: pieces_new_corner
+    2300090: pieces_new_corner001
     3300000: modular_piece_corner_1
     3300002: modular_piece_straight_1
     3300004: Plane001
@@ -113,6 +176,26 @@ ModelImporter:
     3300046: piece_basic_corner004
     3300048: piece_basic_end
     3300050: piece_basic_end_hole
+    3300052: piece_basic_center001
+    3300054: piece_basic_corner005
+    3300056: piece_basic_end001
+    3300058: piece_basic_end002
+    3300060: piece_basic_end_hole001
+    3300062: pieces_basic_ramp
+    3300064: pieces_basic_ramp001
+    3300066: pillar_1
+    3300068: Ramp
+    3300070: Ramp001
+    3300072: Cylinder002
+    3300074: level1_v3
+    3300076: piece_new_center
+    3300078: piece_new_center001
+    3300080: piece_new_end
+    3300082: piece_new_end001
+    3300084: piece_new_hole
+    3300086: piece_new_hole002
+    3300088: pieces_new_corner
+    3300090: pieces_new_corner001
     4300000: Plane001
     4300002: modular_piece_straight_1
     4300004: modular_piece_corner_1
@@ -139,6 +222,26 @@ ModelImporter:
     4300046: piece_basic_corner
     4300048: piece_basic_corner004
     4300050: piece_basic_end_hole
+    4300052: pieces_basic_ramp
+    4300054: piece_basic_corner005
+    4300056: piece_basic_end_hole001
+    4300058: pieces_basic_ramp001
+    4300060: piece_basic_center001
+    4300062: piece_basic_end001
+    4300064: piece_basic_end002
+    4300066: Ramp
+    4300068: Ramp001
+    4300070: pillar_1
+    4300072: piece_new_center
+    4300074: piece_new_end
+    4300076: pieces_new_corner
+    4300078: piece_new_hole
+    4300080: Cylinder002
+    4300082: pieces_new_corner001
+    4300084: piece_new_end001
+    4300086: piece_new_center001
+    4300088: level1_v3
+    4300090: piece_new_hole002
     2186277476908879412: ImportLogs
   externalObjects: {}
   materials:

@@ -1,16 +1,14 @@
 fileFormatVersion: 2
-guid: 82768acc57fbef045abef374b01f9663
+guid: da3edb1683ba71e4ebaab443b189c520
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
     100000: //RootNode
     400000: //RootNode
-    2100000: 03 - Default
-    2100002: 02 - Default
+    2100000: 02 - Default
     2300000: //RootNode
     3300000: //RootNode
-    4300000: piece_basic_end002
-    4300002: level2_p1
+    4300000: Ramp
   externalObjects: {}
   materials:
     importMaterials: 1
