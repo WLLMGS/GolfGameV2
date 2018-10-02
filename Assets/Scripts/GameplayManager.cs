@@ -10,6 +10,10 @@ public class GameplayManager : MonoBehaviour
 
     [SerializeField] private GameObject _ball;
 
+    [SerializeField] private List<GameObject> _spawnPoints = new List<GameObject>();
+
+    private int _currentHoleIndex = 0;
+
     private static GameplayManager _instance = null;
 
     private GameObject _currentBall;
@@ -30,11 +34,12 @@ public class GameplayManager : MonoBehaviour
         _UIStroke = GameObject.Find("StrokesText").gameObject;
 
 #if DEBUG
-Assert.IsNotNull(_UIStroke, "could not find ui");
+        Assert.IsNotNull(_UIStroke, "could not find ui");
 #endif
 
         //spawn player
         SpawnPlayer();
+        SetCameraParams();
     }
 
     // Update is called once per frame
@@ -45,7 +50,7 @@ Assert.IsNotNull(_UIStroke, "could not find ui");
 
     private void HandleControls()
     {
-        if(Input.GetKeyDown(KeyCode.R))
+        if (Input.GetKeyDown(KeyCode.R))
         {
             //respawn player
             RespawnPlayer();
@@ -67,26 +72,24 @@ Assert.IsNotNull(_UIStroke, "could not find ui");
         Assert.IsNotNull(_spawnpoint, "DEPENDENCY ERROR (in GameplayManager): spawnpoint in world not found");
 #endif
 
-        _currentBall = Instantiate(_ball, _spawnpoint.transform.position, Quaternion.identity); //spawn player ball
+        _currentBall = Instantiate(_ball, _spawnPoints[_currentHoleIndex].transform.position, Quaternion.identity); //spawn player ball
 
         Camera.main.gameObject.GetComponent<CameraMovement>().SetObjectToFollow(_currentBall); //-> set object to follow
 
 
-        Vector3 ballPos = _currentBall.transform.position;
 
-        Vector3 dc = new Vector3(14,9,0);
-
-        Vector3 eulerBall = _currentBall.transform.rotation.eulerAngles;
-        Vector3 dcEuler = new Vector3(-13, 30, 0); 
-
-
-
-        //set camera position
-        Camera.main.gameObject.transform.position = ballPos + dc; 
-        Camera.main.gameObject.transform.rotation = Quaternion.Euler(new Vector3(27,-90,0));
 
     }
+    private void SetCameraParams()
+    {
+        Vector3 ballPos = _currentBall.transform.position;
 
+        Vector3 dc = new Vector3(14, 9, 0);
+
+        //set camera position
+        Camera.main.gameObject.transform.position = ballPos + dc;
+        Camera.main.gameObject.transform.rotation = Quaternion.Euler(new Vector3(27, -90, 0));
+    }
     public void NotifyPlayerDead()
     {
         RespawnPlayer();
@@ -96,7 +99,7 @@ Assert.IsNotNull(_UIStroke, "could not find ui");
     {
         Destroy(_currentBall);
 
-        _currentBall = Instantiate(_ball, _spawnpoint.transform.position, Quaternion.identity);
+        _currentBall = Instantiate(_ball, _spawnPoints[_currentHoleIndex].transform.position, Quaternion.identity);
 
         Camera.main.gameObject.GetComponent<CameraMovement>().SetObjectToFollow(_currentBall); //-> set object to follow
     }
@@ -111,8 +114,13 @@ Assert.IsNotNull(_UIStroke, "could not find ui");
 
     public void NotifyReachedFinish()
     {
-        //navigate to finish screen
-        Debug.Log("FINISHED");
+        
+        if(_currentHoleIndex + 1 < _spawnPoints.Count) 
+        {
+            ++_currentHoleIndex;
+            RespawnPlayer();
+        }
+        else Debug.Log("No More Holes");
     }
 
     private void ResetScore()

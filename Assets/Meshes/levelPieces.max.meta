@@ -50,6 +50,9 @@ ModelImporter:
     100088: piece_new_hole002
     100090: pieces_new_corner
     100092: pieces_new_corner001
+    100094: level2_p1
+    100096: pieces_basic_ramp002
+    100098: pillar_002
     400000: //RootNode
     400002: modular_piece_corner_1
     400004: modular_piece_straight_1
@@ -97,6 +100,9 @@ ModelImporter:
     400088: piece_new_hole002
     400090: pieces_new_corner
     400092: pieces_new_corner001
+    400094: level2_p1
+    400096: pieces_basic_ramp002
+    400098: pillar_002
     2100000: No Name
     2100002: 02 - Default
     2100004: 03 - Default
@@ -150,6 +156,9 @@ ModelImporter:
     2300086: piece_new_hole002
     2300088: pieces_new_corner
     2300090: pieces_new_corner001
+    2300092: level2_p1
+    2300094: pieces_basic_ramp002
+    2300096: pillar_002
     3300000: modular_piece_corner_1
     3300002: modular_piece_straight_1
     3300004: Plane001
@@ -196,6 +205,9 @@ ModelImporter:
     3300086: piece_new_hole002
     3300088: pieces_new_corner
     3300090: pieces_new_corner001
+    3300092: level2_p1
+    3300094: pieces_basic_ramp002
+    3300096: pillar_002
     4300000: Plane001
     4300002: modular_piece_straight_1
     4300004: modular_piece_corner_1
@@ -242,6 +254,9 @@ ModelImporter:
     4300086: piece_new_center001
     4300088: level1_v3
     4300090: piece_new_hole002
+    4300092: pieces_basic_ramp002
+    4300094: level2_p1
+    4300096: pillar_002
     2186277476908879412: ImportLogs
   externalObjects: {}
   materials:
