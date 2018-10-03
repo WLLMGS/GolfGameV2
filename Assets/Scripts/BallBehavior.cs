@@ -35,8 +35,11 @@ public class BallBehavior : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        IsReadyToMove();
-        HandleMovement();
+        if (!PauseMenuScript.IsPaused)
+        {
+            IsReadyToMove();
+            HandleMovement();
+        }
     }
     void IsReadyToMove()
     {
@@ -101,15 +104,16 @@ public class BallBehavior : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
-        if (other.gameObject.tag == "Killbox")
-        {
-            //notify game manager
-            GameplayManager.GetInstance().NotifyPlayerDead();
-        }
-        else if (other.gameObject.tag == "Finish")
+        if (other.gameObject.tag == "Finish")
         {
             //notify level end
             GameplayManager.GetInstance().NotifyReachedFinish();
         }
+        else if (other.gameObject.tag == "Killbox")
+        {
+            GameplayManager.GetInstance().NotifyPlayerDead();
+        }
     }
+
+    
 }
