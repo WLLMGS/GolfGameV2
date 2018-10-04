@@ -95,7 +95,7 @@ public class GameplayManager : MonoBehaviour
 
         Debug.Log(ballPos);
 
-        Vector3 dc = new Vector3(14, 9, 0);
+        Vector3 dc = new Vector3(19, 15, 0);
 
         //set camera position
         Camera.main.gameObject.transform.position = ballPos + dc;

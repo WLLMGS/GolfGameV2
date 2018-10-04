@@ -13,6 +13,7 @@ ModelImporter:
     100014: tree_2
     100016: tree_3
     100018: terrain_2
+    100020: hill_1
     400000: //RootNode
     400002: terrain1
     400004: terrain2
@@ -23,6 +24,7 @@ ModelImporter:
     400014: tree_2
     400016: tree_3
     400018: terrain_2
+    400020: hill_1
     2100000: 02 - Default
     2100002: 01 - Default
     2100004: No Name
@@ -36,6 +38,7 @@ ModelImporter:
     2300012: tree_2
     2300014: tree_3
     2300016: terrain_2
+    2300018: hill_1
     3300000: terrain1
     3300002: terrain2
     3300004: tree1
@@ -45,6 +48,7 @@ ModelImporter:
     3300012: tree_2
     3300014: tree_3
     3300016: terrain_2
+    3300018: hill_1
     4300000: tree1
     4300002: terrain1
     4300004: terrain2
@@ -54,6 +58,7 @@ ModelImporter:
     4300012: rock_1
     4300014: Cylinder001
     4300016: terrain_2
+    4300018: hill_1
   externalObjects: {}
   materials:
     importMaterials: 1

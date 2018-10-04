@@ -56,6 +56,8 @@ ModelImporter:
     100100: level2_p002
     100102: pieces_new_corner002
     100104: piece_new_center002
+    100106: piece_new_platform
+    100108: level2_p003
     400000: //RootNode
     400002: modular_piece_corner_1
     400004: modular_piece_straight_1
@@ -109,6 +111,8 @@ ModelImporter:
     400100: level2_p002
     400102: pieces_new_corner002
     400104: piece_new_center002
+    400106: piece_new_platform
+    400108: level2_p003
     2100000: No Name
     2100002: 02 - Default
     2100004: 03 - Default
@@ -168,6 +172,8 @@ ModelImporter:
     2300098: level2_p002
     2300100: pieces_new_corner002
     2300102: piece_new_center002
+    2300104: piece_new_platform
+    2300106: level2_p003
     3300000: modular_piece_corner_1
     3300002: modular_piece_straight_1
     3300004: Plane001
@@ -220,6 +226,8 @@ ModelImporter:
     3300098: level2_p002
     3300100: pieces_new_corner002
     3300102: piece_new_center002
+    3300104: piece_new_platform
+    3300106: level2_p003
     4300000: Plane001
     4300002: modular_piece_straight_1
     4300004: modular_piece_corner_1
@@ -272,6 +280,8 @@ ModelImporter:
     4300098: level2_p002
     4300100: pieces_new_corner002
     4300102: piece_new_center002
+    4300104: piece_new_platform
+    4300106: level2_p003
     2186277476908879412: ImportLogs
   externalObjects: {}
   materials:
