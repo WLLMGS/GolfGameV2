@@ -66,6 +66,11 @@ public class GameplayManager : MonoBehaviour
         {
             SetCameraParams();
         }
+
+        else if(Input.GetKeyDown(KeyCode.N))
+        {
+            NotifyReachedFinish();
+        }
         
     }
 

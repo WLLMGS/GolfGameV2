@@ -58,6 +58,9 @@ ModelImporter:
     100104: piece_new_center002
     100106: piece_new_platform
     100108: level2_p003
+    100110: Box001
+    100112: modular_pieces_barricade
+    100114: modular_pieces_corner
     400000: //RootNode
     400002: modular_piece_corner_1
     400004: modular_piece_straight_1
@@ -113,6 +116,9 @@ ModelImporter:
     400104: piece_new_center002
     400106: piece_new_platform
     400108: level2_p003
+    400110: Box001
+    400112: modular_pieces_barricade
+    400114: modular_pieces_corner
     2100000: No Name
     2100002: 02 - Default
     2100004: 03 - Default
@@ -174,6 +180,9 @@ ModelImporter:
     2300102: piece_new_center002
     2300104: piece_new_platform
     2300106: level2_p003
+    2300108: Box001
+    2300110: modular_pieces_barricade
+    2300112: modular_pieces_corner
     3300000: modular_piece_corner_1
     3300002: modular_piece_straight_1
     3300004: Plane001
@@ -228,6 +237,9 @@ ModelImporter:
     3300102: piece_new_center002
     3300104: piece_new_platform
     3300106: level2_p003
+    3300108: Box001
+    3300110: modular_pieces_barricade
+    3300112: modular_pieces_corner
     4300000: Plane001
     4300002: modular_piece_straight_1
     4300004: modular_piece_corner_1
@@ -282,6 +294,9 @@ ModelImporter:
     4300102: piece_new_center002
     4300104: piece_new_platform
     4300106: level2_p003
+    4300108: modular_pieces_barricade
+    4300110: Box001
+    4300112: modular_pieces_corner
     2186277476908879412: ImportLogs
   externalObjects: {}
   materials:
