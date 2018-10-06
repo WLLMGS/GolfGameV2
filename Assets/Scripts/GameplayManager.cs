@@ -40,10 +40,7 @@ public class GameplayManager : MonoBehaviour
         Assert.IsNotNull(_UIStroke, "could not find ui");
 #endif
 
-        //spawn player
-
-
-
+      
     }
 
 
