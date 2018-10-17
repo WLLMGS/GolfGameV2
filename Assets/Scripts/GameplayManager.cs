@@ -40,7 +40,10 @@ public class GameplayManager : MonoBehaviour
         Assert.IsNotNull(_UIStroke, "could not find ui");
 #endif
 
-      
+        //spawn player
+
+
+
     }
 
 
@@ -62,11 +65,6 @@ public class GameplayManager : MonoBehaviour
         else if (Input.GetKeyDown(KeyCode.C))
         {
             SetCameraParams();
-        }
-
-        else if(Input.GetKeyDown(KeyCode.N))
-        {
-            NotifyReachedFinish();
         }
         
     }

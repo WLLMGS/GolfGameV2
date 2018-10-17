@@ -43,10 +43,7 @@ public class BallBehavior : MonoBehaviour
     }
     void IsReadyToMove()
     {
-        if (_rigid.velocity.magnitude <= 1.0f) 
-        {
-            _isReadyToMove = true;
-        }
+        if (_rigid.velocity.magnitude <= 1.0f) _isReadyToMove = true;
     }
     void HandleMovement()
     {
