@@ -20,7 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4263178819407378}
   m_Layer: 0
-  m_Name: hole2
+  m_Name: Hole2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
