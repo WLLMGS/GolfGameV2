@@ -5,6 +5,8 @@ using UnityEngine.Assertions;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
+
+
 public class GameplayManager : MonoBehaviour
 {
     [SerializeField] private GameObject _ball;
@@ -22,12 +24,22 @@ public class GameplayManager : MonoBehaviour
 
     private GameObject _UIStroke;
 
+    [SerializeField] private GameObject _tableParent;
+    [SerializeField] private GameObject _tableLabelPrefab;
+    [SerializeField] private GameObject _tableTextPrefab;
+
+
+    private List<Text> _tableElements = new List<Text>();
+
+
+
     // Use this for initialization
     void Awake()
     {
         if (_instance == null) _instance = this;
 
-        SpawnPlayer();
+        //SpawnPlayer();
+        RespawnPlayer();
         SetCameraParams();
     }
 
@@ -36,17 +48,13 @@ public class GameplayManager : MonoBehaviour
     {
         _UIStroke = GameObject.Find("StrokesText").gameObject;
 
-#if DEBUG
-        Assert.IsNotNull(_UIStroke, "could not find ui");
-#endif
-
-        //spawn player
-
-
-
+        InitScoreboard();
     }
 
-
+    public static GameplayManager GetInstance()
+    {
+        return _instance;
+    }
 
     // Update is called once per frame
     void Update()
@@ -66,29 +74,15 @@ public class GameplayManager : MonoBehaviour
         {
             SetCameraParams();
         }
-        
-    }
 
-    public static GameplayManager GetInstance()
-    {
-        return _instance;
-    }
-
-    private void SpawnPlayer()
-    {
-        //find spawnpoint
-        _spawnpoint = GameObject.Find("SpawnPoint");
-
-#if DEBUG
-        Assert.IsNotNull(_spawnpoint, "DEPENDENCY ERROR (in GameplayManager): spawnpoint in world not found");
-#endif
-
-        _currentBall = Instantiate(_ball, _spawnPoints[_currentHoleIndex].transform.position, Quaternion.identity); //spawn player ball
-
-        Camera.main.gameObject.GetComponent<CameraMovement>().SetObjectToFollow(_currentBall); //-> set object to follow
-        Debug.Log("DONE");
+        if (Input.GetKeyDown(KeyCode.Tab)) ToggleTable();
 
     }
+
+
+
+
+
     private void SetCameraParams()
     {
         Vector3 ballPos = _currentBall.transform.position;
@@ -108,7 +102,7 @@ public class GameplayManager : MonoBehaviour
 
     private void RespawnPlayer()
     {
-        Destroy(_currentBall);
+        if (_currentBall != null) Destroy(_currentBall);
 
         _currentBall = Instantiate(_ball, _spawnPoints[_currentHoleIndex].transform.position, Quaternion.identity);
 
@@ -119,24 +113,84 @@ public class GameplayManager : MonoBehaviour
     {
         ++_strokes;
 
+
         //update UI
-        _UIStroke.GetComponent<Text>().text = _strokes.ToString();
+        UpdateScoreUI();
     }
 
     public void NotifyReachedFinish()
     {
 
+        //set score table text to amount of stroke for the hole
+        //reset the score -> strokes to zero & changed in UI
+        UpdateScoreUI();
+        ResetScore();
+
+        //increment current hole index
+        //respawn player at the next hole
+        //if there is a next hole
         if (_currentHoleIndex + 1 < _spawnPoints.Count)
         {
             ++_currentHoleIndex;
             RespawnPlayer();
         }
-        else Debug.Log("No More Holes");
     }
 
     private void ResetScore()
     {
         _strokes = 0;
         _UIStroke.GetComponent<Text>().text = _strokes.ToString();
+
+    }
+
+
+    private void UpdateScoreUI()
+    {
+        _tableElements[_currentHoleIndex].text = _strokes.ToString();
+        _UIStroke.GetComponent<Text>().text = _strokes.ToString();
+    }
+    private void InitScoreboard()
+    {
+        /*
+            this piece of code sets up the table in the canvas
+            it uses a parent thats already in the canvas
+            it consists of a table label and a tabel text
+            table label shows which hole it is (hole 1, hole 2)
+            table text show how many strokes the player has on this hole
+            the labels get added in a for each and use a y counter to determine the height
+         */
+
+
+        int ycounter = 0;
+
+        foreach (GameObject spawnpoint in _spawnPoints)
+        {
+            GameObject lbl = Instantiate(_tableLabelPrefab, _tableParent.transform);
+            RectTransform rt = lbl.GetComponent<RectTransform>();
+            Text txtComp = lbl.GetComponent<Text>();
+
+            rt.position += new Vector3(0, -ycounter * rt.sizeDelta.y, 0);
+
+            txtComp.text = "Hole " + (ycounter + 1).ToString() + " : ";
+
+            GameObject txt = Instantiate(_tableTextPrefab, _tableParent.transform);
+            rt = txt.GetComponent<RectTransform>();
+            txtComp = txt.GetComponent<Text>();
+
+            rt.position += new Vector3(rt.sizeDelta.x, -ycounter * rt.sizeDelta.y, 0);
+            txtComp.text = "0";
+
+            ++ycounter;
+
+            _tableElements.Add(txtComp);
+        }
+
+        _tableParent.SetActive(false);
+    }
+
+    private void ToggleTable()
+    {
+        bool isactive = !_tableParent.activeSelf;
+        _tableParent.SetActive(isactive);
     }
 }
