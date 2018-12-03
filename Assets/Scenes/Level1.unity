@@ -5805,7 +5805,7 @@ GameObject:
   m_Component:
   - component: {fileID: 699310800}
   m_Layer: 0
-  m_Name: Hole3
+  m_Name: hole3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -12657,7 +12657,7 @@ MeshCollider:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1408106365}
-  m_Material: {fileID: 13400000, guid: a2fb811f07bbd48439ba8c253b8208f8, type: 2}
+  m_Material: {fileID: 13400000, guid: 2fe4d81637a026c48aa5c90d2d23089e, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -13144,10 +13144,9 @@ Prefab:
       propertyPath: m_RootOrder
       value: 17
       objectReference: {fileID: 0}
-    - target: {fileID: 114989261395874262, guid: e19ad318f3b6557428b72cc0118bd298,
-        type: 2}
-      propertyPath: _multiplier
-      value: 125
+    - target: {fileID: 1480354144546334, guid: e19ad318f3b6557428b72cc0118bd298, type: 2}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e19ad318f3b6557428b72cc0118bd298, type: 2}

@@ -9,6 +9,8 @@ public class BallBehavior : MonoBehaviour
 {
 
     [SerializeField] private float _moveForce = 3.0f;
+    [SerializeField] private float _maxMoveMagnitude = 15.0f;
+
 
     private Rigidbody _rigid;
 
@@ -18,6 +20,8 @@ public class BallBehavior : MonoBehaviour
 
     private GameObject _directionArrow;
     private GameObject _directionPlane;
+
+
     // Use this for initialization
     void Start()
     {
@@ -51,48 +55,64 @@ public class BallBehavior : MonoBehaviour
         {
             if (Input.GetMouseButton(0))
             {
+                //set the direction arrow active
                 if (!_directionArrow.activeSelf) _directionArrow.SetActive(true);
 
-
+                //get mouse movement
                 float xm = Input.GetAxis("Mouse X");
                 float ym = Input.GetAxis("Mouse Y");
                 //Debug.Log("MOUSE MOVEMENT: [" + xm + "," + ym + "]");
 
+                //add the mouse movement to the direction
                 _dir += new Vector3(xm, 0, ym);
 
+                //clamp direction magnitude
+                ClampDirection();
+
+                //calculate the angle for the direction arrow
                 float angle = Mathf.Atan2(_dir.x, _dir.z);
                 float camAngle = Camera.main.transform.rotation.eulerAngles.y * Mathf.Deg2Rad;
                 angle += camAngle + Mathf.PI / 2.0f;
 
-
+                //set the direction arrow rotation to cam rotatation + direction angle
                 _directionArrow.transform.rotation = Quaternion.Euler(new Vector3(0, angle * Mathf.Rad2Deg, 0));
 
-                _directionPlane.transform.localScale = new Vector3(_dir.magnitude, 1.0f, 1.0f);
+                //set the scale to the magnitude of the direction
+                _directionPlane.transform.localScale = new Vector3(_dir.magnitude, 8.0f, 1.0f);
 
             }
 
             if (Input.GetMouseButtonUp(0))
             {
+                //disable the direction arrow
                 _directionArrow.SetActive(false);
 
+
+                //calculate angle
                 float angle = Mathf.Atan2(_dir.x, _dir.z);
                 float camAngle = Camera.main.transform.rotation.eulerAngles.y * Mathf.Deg2Rad;
 
                 // if cam = -90 + 90.0f = 0	
                 angle += camAngle + Mathf.PI / 2.0f;
 
+
+                //calculate force in the angle direction
                 Vector3 force = new Vector3(-Mathf.Cos(angle), 0, Mathf.Sin(angle));
                 float magnitude = _dir.magnitude;
 
+                //multiply the force by the magnitude of the direction
                 force *= magnitude;
 
+                //add the force to the rigid body
                 _rigid.AddForce(force * _moveForce, ForceMode.Impulse);
 
+                //set direction back to zero
                 _dir = Vector3.zero;
 
                 //notify game manager
                 GameplayManager.GetInstance().NotifyStroke();
 
+                //set ready to move to false
                 _isReadyToMove = false;
             }
 
@@ -115,5 +135,13 @@ public class BallBehavior : MonoBehaviour
         }
     }
 
-    
+
+    private void ClampDirection()
+    {
+        if (_dir.magnitude > _maxMoveMagnitude)
+        {
+            _dir = _dir.normalized * _maxMoveMagnitude;
+        }
+    }
+
 }
